@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Median of Two Sorted Arrays | MetaThought</title>
+    <title>Add Two Numbers | MetaThought</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Zhong Li">
     
-    <meta name="description" content="There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be ">
+    <meta name="description" content="You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single ">
     
     
     
@@ -66,15 +66,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/05/16/median-of-two-sorted-arrays/" title="Median of Two Sorted Arrays" itemprop="url">Median of Two Sorted Arrays</a>
+      <a href="/2014/05/17/add-two-numbers/" title="Add Two Numbers" itemprop="url">Add Two Numbers</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="Zhong Li">Zhong Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-05-17T03:47:22.000Z" itemprop="datePublished">May 16 2014</time>
-    Updated:<time datetime="2014-05-17T03:49:44.000Z" itemprop="dateModified">May 16 2014</time>
+    <time datetime="2014-05-17T04:24:22.000Z" itemprop="datePublished">May 17 2014</time>
+    Updated:<time datetime="2014-05-17T04:25:05.000Z" itemprop="dateModified">May 17 2014</time>
     
   </p>
 </header>
@@ -87,10 +87,11 @@
 		</div>
 		
 		<blockquote>
-<p>There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>Output: 7 -&gt; 0 -&gt; 8</p>
 </blockquote>
-<p><br><br><em>Java:</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre>1
+<p><br><br><em>C++:</em></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -123,39 +124,129 @@
 31
 32
 33
-</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-  <span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span>(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[]) {
-    <span class="keyword">int</span> m = A.length;
-    <span class="keyword">int</span> n = B.length;
-    <span class="keyword">int</span> k = m + n;
-    <span class="keyword">if</span> (k % <span class="number">2</span> != <span class="number">0</span>) {
-      <span class="keyword">return</span> findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span> + <span class="number">1</span>);
-    } <span class="keyword">else</span> {
-      <span class="keyword">return</span> (findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span>) + findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span> + <span class="number">1</span>)) / <span class="number">2.0</span>;
-    }
-  }
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+</pre></td><td class="code"><pre><span class="comment">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */</span>
+<span class="keyword">class</span> Solution {
+<span class="keyword">public</span>:
 
-  <span class="keyword">private</span> <span class="keyword">double</span> <span class="title">findKth</span>(<span class="keyword">int</span> A[], <span class="keyword">int</span> a, <span class="keyword">int</span> B[], <span class="keyword">int</span> b, <span class="keyword">int</span> k) {
-    <span class="keyword">if</span> (A.length - a &gt; B.length - b) {
-      <span class="keyword">return</span> findKth(B, b, A, a, k);
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        ListNode *realResult = <span class="keyword">new</span> ListNode(<span class="number">0</span>);
+        ListNode *result  = realResult;
+        <span class="keyword">int</span> plus = <span class="number">0</span>;
+        ListNode *node1 = l1;
+        ListNode *node2 = l2;
+
+        <span class="keyword">while</span> (<span class="number">1</span>) {
+            <span class="keyword">int</span> temp = node1-&gt;val + node2-&gt;val + plus;
+            result-&gt;val = temp % <span class="number">10</span>;
+            plus = temp / <span class="number">10</span>;
+
+            <span class="keyword">if</span> (node1-&gt;next == NULL || node2-&gt;next == NULL) {
+                <span class="keyword">break</span>;
+            }
+            node1 = node1-&gt;next;
+            node2 = node2-&gt;next;
+
+            result-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);
+            result = result-&gt;next;
+        }
+
+        <span class="keyword">if</span> ((node1-&gt;next != NULL)) {
+            node1 = node1-&gt;next;
+            result-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);
+            result = result-&gt;next;
+
+            <span class="keyword">int</span> temp = plus + node1-&gt;val;
+            result-&gt;val = temp % <span class="number">10</span>;
+            plus = temp / <span class="number">10</span>;
+
+            <span class="keyword">while</span> (node1-&gt;next != NULL) {
+                <span class="keyword">int</span> temp = plus + node1-&gt;next-&gt;val;
+                result-&gt;next = <span class="keyword">new</span> ListNode(temp % <span class="number">10</span>);
+                plus = temp / <span class="number">10</span>;
+
+                result = result-&gt;next;
+                node1 = node1-&gt;next;
+            }
+        }
+
+        <span class="keyword">if</span> ((node2-&gt;next != NULL)) {
+            node2 = node2-&gt;next;
+            result-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);
+            result = result-&gt;next;
+
+            <span class="keyword">int</span> temp = plus + node2-&gt;val;
+            result-&gt;val = temp % <span class="number">10</span>;
+            plus = temp / <span class="number">10</span>;
+
+            <span class="keyword">while</span> (node2-&gt;next != NULL) {
+
+                <span class="keyword">int</span> temp = plus + node2-&gt;next-&gt;val;
+                result-&gt;next = <span class="keyword">new</span> ListNode(temp % <span class="number">10</span>);
+                plus = temp / <span class="number">10</span>;
+
+                result = result-&gt;next;
+                node2 = node2-&gt;next;
+            }
+        }
+
+        <span class="keyword">if</span>(plus != <span class="number">0</span>){
+            result-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);
+        }
+        <span class="keyword">return</span> realResult;
     }
-    <span class="keyword">if</span> (a &gt;= A.length) {
-      <span class="keyword">return</span> B[b + k - <span class="number">1</span>];
-    }
-    <span class="keyword">if</span> (k == <span class="number">1</span>) {
-      <span class="keyword">return</span> Math.min(A[a], B[b]);
-    }
-    <span class="keyword">int</span> midA = Math.min(k / <span class="number">2</span>, A.length - a);
-    <span class="keyword">int</span> midB = k - midA;
-    <span class="keyword">if</span> (A[a + midA - <span class="number">1</span>] &lt; B[b + midB - <span class="number">1</span>]) {
-      <span class="keyword">return</span> findKth(A, a + midA, B, b, k - midA);
-    } <span class="keyword">else</span> <span class="keyword">if</span> (A[a + midA - <span class="number">1</span>] &gt; B[b + midB - <span class="number">1</span>]) {
-      <span class="keyword">return</span> findKth(A, a, B, b + midB, k - midB);
-    } <span class="keyword">else</span> {
-      <span class="keyword">return</span> A[a + midA - <span class="number">1</span>];
-    }
-  }
-}
+};
 </pre></td></tr></table></figure>
 
 
@@ -165,7 +256,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/C++/">C++</a><a href="/tags/Java/">Java</a><a href="/tags/leetcode/">leetcode</a>
+  <span></span> <a href="/tags/C++/">C++</a><a href="/tags/leetcode/">leetcode</a>
   </div>
 
 
@@ -173,7 +264,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2014/05/16/median-of-two-sorted-arrays/" data-title="Median of Two Sorted Arrays | MetaThought" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2014/05/17/add-two-numbers/" data-title="Add Two Numbers | MetaThought" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -182,19 +273,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/05/17/longest-substring-without-repeating-characters/" title="Longest Substring Without Repeating Characters">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Longest Substring Without Repeating Characters</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/05/16/2-sums/"  title="2 Sums">
+<a href="/2014/05/17/longest-substring-without-repeating-characters/"  title="Longest Substring Without Repeating Characters">
  <strong>NEXT:</strong><br/> 
- <span>2 Sums
+ <span>Longest Substring Without Repeating Characters
 </span>
 </a>
 </div>
