@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | Hexo</title>
+    <title>2 Sums | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="John Doe">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation to learn how to use.">
+    <meta name="description" content="Given an array of integers, find two numbers such that they add up to a specific target number.
+The function twoSum should return indices of the two n">
     
     
     
@@ -66,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/05/13/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2014/05/16/2-sums/" title="2 Sums" itemprop="url">2 Sums</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="John Doe">John Doe</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-05-13T23:56:40.000Z" itemprop="datePublished">May 13 2014</time>
-    Updated:<time datetime="2014-05-13T23:56:40.000Z" itemprop="dateModified">May 13 2014</time>
+    <time datetime="2014-05-17T02:47:13.000Z" itemprop="datePublished">May 16 2014</time>
+    Updated:<time datetime="2014-05-17T03:02:38.000Z" itemprop="dateModified">May 16 2014</time>
     
   </p>
 </header>
@@ -86,17 +87,63 @@
 		
 		</div>
 		
-		<p>Welcome to <a href="http://hexo.io" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs" target="_blank">documentation</a> to learn how to use.</p>
+		<blockquote>
+<p>Given an array of integers, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution.</p>
+<p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
+</blockquote>
+<p><br><br><em>Java:</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+	<span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+		HashMap&lt;Integer, Integer&gt; hMap = <span class="keyword">new</span> HashMap&lt;&gt;();
+		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+
+		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) {
+			<span class="keyword">if</span> (hMap.containsKey(target - numbers[i])) {
+				result[<span class="number">0</span>] = hMap.get(target - numbers[i]) + <span class="number">1</span>;
+				result[<span class="number">1</span>] = i + <span class="number">1</span>;
+			} <span class="keyword">else</span> <span class="keyword">if</span> (!hMap.containsKey(numbers[i])) {
+				hMap.put(numbers[i], i);
+			}
+		}
+		<span class="keyword">return</span> result;
+	}
+}
+</pre></td></tr></table></figure>
+
+
   
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C++/">C++</a><a href="/tags/leetcode/">leetcode</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2014/05/13/hello-world/" data-title="Hello World | Hexo" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2014/05/16/2-sums/" data-title="2 Sums | Hexo" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -119,6 +166,17 @@
   
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C++/" title="C++">C++<sup>1</sup></a></li>
+		
+			<li><a href="/tags/leetcode/" title="leetcode">leetcode<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
 
   <div class="rsspart">
 	<a href="null" target="_blank" title="rss">RSS</a>
