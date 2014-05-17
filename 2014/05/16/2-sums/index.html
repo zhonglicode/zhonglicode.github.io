@@ -74,7 +74,7 @@ The function twoSum should return indices of the two n">
     </p>
   <p class="article-time">
     <time datetime="2014-05-17T02:47:13.000Z" itemprop="datePublished">May 16 2014</time>
-    Updated:<time datetime="2014-05-17T08:51:54.000Z" itemprop="dateModified">May 17 2014</time>
+    Updated:<time datetime="2014-05-17T08:52:43.000Z" itemprop="dateModified">May 17 2014</time>
     
   </p>
 </header>
@@ -93,29 +93,26 @@ The function twoSum should return indices of the two n">
 <p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
 </blockquote>
 <p><br><br><em>C++:</em></p>
-<figure class="highlight"><pre><font face="monospace"><font color="#ffff00">&#xA0;1&#xA0;</font>```cpp
-<font color="#ffff00">&#xA0;2&#xA0;</font>class&#xA0;Solution&#xA0;{
-<font color="#ffff00">&#xA0;3&#xA0;</font>public:
-<font color="#ffff00">&#xA0;4&#xA0;</font>&#xA0;&#xA0;vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;twoSum<font color="#ffd7d7">(</font>vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;&amp;numbers, int target<font color="#ffd7d7">)</font>&#xA0;{
-<font color="#ffff00">&#xA0;5&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;result;
-<font color="#ffff00">&#xA0;6&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;unordered_map<font color="#ffff00">&lt;</font>int,&#xA0;int<font color="#ffff00">&gt;</font>&#xA0;ht;
-<font color="#ffff00">&#xA0;7&#xA0;</font>
-<font color="#ffff00">&#xA0;8&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;for&#xA0;<font color="#ffd7d7">(</font>unsigned i&#xA0;<font color="#ffff00">=</font>&#xA0;<font color="#ff40ff">0</font>; i&#xA0;<font color="#ffff00">&lt;</font>&#xA0;numbers.size<font color="#ffd7d7">()</font>; i<font color="#ffff00">++</font><font color="#ffd7d7">)</font>&#xA0;{
-<font color="#ffff00">&#xA0;9&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">auto</font>&#xA0;it&#xA0;=&#xA0;ht.find<font color="#ffd7d7">(</font>target&#xA0;<font color="#ffff00">-</font>&#xA0;numbers[i]<font color="#ffd7d7">)</font>;
-<font color="#ffff00">10&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">if</font>&#xA0;<font color="#ffd7d7">(</font>it&#xA0;<font color="#ffff00">!=</font>&#xA0;ht.end<font color="#ffd7d7">())</font>&#xA0;{
-<font color="#ffff00">11&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;result.push_back<font color="#ffd7d7">(</font>ht[target&#xA0;<font color="#ffff00">-</font>&#xA0;numbers[i]]&#xA0;<font color="#ffff00">+</font>&#xA0;<font color="#ff40ff">1</font><font color="#ffd7d7">)</font>;
-<font color="#ffff00">12&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;result.push_back<font color="#ffd7d7">(</font>i&#xA0;<font color="#ffff00">+</font>&#xA0;<font color="#ff40ff">1</font><font color="#ffd7d7">)</font>;
-<font color="#ffff00">13&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">break</font>;
-<font color="#ffff00">14&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;<font color="#ffff00">else</font>&#xA0;{
-<font color="#ffff00">15&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ht[numbers[i]]&#xA0;<font color="#ffff00">=</font>&#xA0;i;
-<font color="#ffff00">16&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
-<font color="#ffff00">17&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;}
-<font color="#ffff00">18&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;
-<font color="#ffff00">19&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">return</font>&#xA0;result;
-<font color="#ffff00">20&#xA0;</font>&#xA0;&#xA0;}
-<font color="#ffff00">21&#xA0;</font>};
-<font color="#ffff00">22&#xA0;</font>
-<font color="#ffff00">23&#xA0;</font>```
+<figure class="highlight"><pre><font face="monospace"><font color="#ffff00">&#xA0;1&#xA0;</font>class&#xA0;Solution&#xA0;{
+<font color="#ffff00">&#xA0;2&#xA0;</font>public:
+<font color="#ffff00">&#xA0;3&#xA0;</font>&#xA0;&#xA0;vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;twoSum<font color="#ffd7d7">(</font>vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;&amp;numbers, int target<font color="#ffd7d7">)</font>&#xA0;{
+<font color="#ffff00">&#xA0;4&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;vector<font color="#ffff00">&lt;</font>int<font color="#ffff00">&gt;</font>&#xA0;result;
+<font color="#ffff00">&#xA0;5&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;unordered_map<font color="#ffff00">&lt;</font>int,&#xA0;int<font color="#ffff00">&gt;</font>&#xA0;ht;
+<font color="#ffff00">&#xA0;6&#xA0;</font>
+<font color="#ffff00">&#xA0;7&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;for&#xA0;<font color="#ffd7d7">(</font>unsigned i&#xA0;<font color="#ffff00">=</font>&#xA0;<font color="#ff40ff">0</font>; i&#xA0;<font color="#ffff00">&lt;</font>&#xA0;numbers.size<font color="#ffd7d7">()</font>; i<font color="#ffff00">++</font><font color="#ffd7d7">)</font>&#xA0;{
+<font color="#ffff00">&#xA0;8&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">auto</font>&#xA0;it&#xA0;=&#xA0;ht.find<font color="#ffd7d7">(</font>target&#xA0;<font color="#ffff00">-</font>&#xA0;numbers[i]<font color="#ffd7d7">)</font>;
+<font color="#ffff00">&#xA0;9&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">if</font>&#xA0;<font color="#ffd7d7">(</font>it&#xA0;<font color="#ffff00">!=</font>&#xA0;ht.end<font color="#ffd7d7">())</font>&#xA0;{
+<font color="#ffff00">10&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;result.push_back<font color="#ffd7d7">(</font>ht[target&#xA0;<font color="#ffff00">-</font>&#xA0;numbers[i]]&#xA0;<font color="#ffff00">+</font>&#xA0;<font color="#ff40ff">1</font><font color="#ffd7d7">)</font>;
+<font color="#ffff00">11&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;result.push_back<font color="#ffd7d7">(</font>i&#xA0;<font color="#ffff00">+</font>&#xA0;<font color="#ff40ff">1</font><font color="#ffd7d7">)</font>;
+<font color="#ffff00">12&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">break</font>;
+<font color="#ffff00">13&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}&#xA0;<font color="#ffff00">else</font>&#xA0;{
+<font color="#ffff00">14&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;ht[numbers[i]]&#xA0;<font color="#ffff00">=</font>&#xA0;i;
+<font color="#ffff00">15&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;}
+<font color="#ffff00">16&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;}
+<font color="#ffff00">17&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;
+<font color="#ffff00">18&#xA0;</font>&#xA0;&#xA0;&#xA0;&#xA0;<font color="#ffff00">return</font>&#xA0;result;
+<font color="#ffff00">19&#xA0;</font>&#xA0;&#xA0;}
+<font color="#ffff00">20&#xA0;</font>};
 </font></pre></figure>
 
 
