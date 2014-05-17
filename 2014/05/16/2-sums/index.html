@@ -74,7 +74,7 @@ The function twoSum should return indices of the two n">
     </p>
   <p class="article-time">
     <time datetime="2014-05-17T02:47:13.000Z" itemprop="datePublished">May 16 2014</time>
-    Updated:<time datetime="2014-05-17T09:01:29.000Z" itemprop="dateModified">May 17 2014</time>
+    Updated:<time datetime="2014-05-17T09:05:58.000Z" itemprop="dateModified">May 17 2014</time>
     
   </p>
 </header>
@@ -92,51 +92,20 @@ The function twoSum should return indices of the two n">
 <p>You may assume that each input would have exactly one solution.</p>
 <p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
 </blockquote>
-<p><br><br><em>C++:</em><br>{% codeblock lang:cpp % }</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-</pre></td><td class="code"><pre><span class="keyword">class</span> Solution {
-<span class="keyword">public</span>:
-  <span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> twoSum(<span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> &numbers, <span class="keyword">int</span> target) {
-    <span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> result;
-    <span class="stl_container"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;</span> ht;
-
-    <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; numbers.size(); i++) {
-      <span class="keyword">auto</span> it = ht.find(target - numbers[i]);
-      <span class="keyword">if</span> (it != ht.end()) {
-        result.push_back(ht[target - numbers[i]] + <span class="number">1</span>);
-        result.push_back(i + <span class="number">1</span>);
-        <span class="keyword">break</span>;
-      } <span class="keyword">else</span> {
-        ht[numbers[i]] = i;
-      }
-    }
-    
-    <span class="keyword">return</span> result;
+<p><br><br><em>C++:</em><br>{% codeblock lang:cpp % }<br>class Solution {<br>public:<br>  vector<int> twoSum(vector<int> &amp;numbers, int target) {<br>    vector<int> result;<br>    unordered_map<int, int> ht;</p>
+<pre><code><span class="keyword">for</span> (unsigned i = <span class="number">0</span>; i &lt; numbers.size(); i++) {
+  auto <span class="keyword">it</span> = ht.find(target - numbers[i]);
+  <span class="keyword">if</span> (<span class="keyword">it</span> != ht.<span class="keyword">end</span>()) {
+    <span class="constant">result</span>.push_back(ht[target - numbers[i]] + <span class="number">1</span>);
+    <span class="constant">result</span>.push_back(i + <span class="number">1</span>);
+    break;
+  } <span class="keyword">else</span> {
+    ht[numbers[i]] = i;
   }
-};
-</pre></td></tr></table></figure>
-
-
-<p>{% endcodeblock % }</p>
+}
+<span class="command">
+return</span> <span class="constant">result</span>;
+</code></pre><p>  }<br>};<br>{% endcodeblock % }</p>
 <p><br><br><em>Java:</em></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre>1
 2
