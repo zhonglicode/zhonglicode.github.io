@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>2 Sums | MetaThought</title>
+    <title>Median of Two Sorted Arrays | MetaThought</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Zhong Li">
     
-    <meta name="description" content="Given an array of integers, find two numbers such that they add up to a specific target number.
-The function twoSum should return indices of the two n">
+    <meta name="description" content="There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be ">
     
     
     
@@ -67,15 +66,15 @@ The function twoSum should return indices of the two n">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/05/16/2-sums/" title="2 Sums" itemprop="url">2 Sums</a>
+      <a href="/2014/05/16/median-of-two-sorted-arrays/" title="Median of Two Sorted Arrays" itemprop="url">Median of Two Sorted Arrays</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="Zhong Li">Zhong Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-05-17T02:47:13.000Z" itemprop="datePublished">May 16 2014</time>
-    Updated:<time datetime="2014-05-17T03:48:59.000Z" itemprop="dateModified">May 16 2014</time>
+    <time datetime="2014-05-17T03:47:22.000Z" itemprop="datePublished">May 16 2014</time>
+    Updated:<time datetime="2014-05-17T03:49:09.000Z" itemprop="dateModified">May 16 2014</time>
     
   </p>
 </header>
@@ -88,13 +87,10 @@ The function twoSum should return indices of the two n">
 		</div>
 		
 		<blockquote>
-<p>Given an array of integers, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
-<p>You may assume that each input would have exactly one solution.</p>
-<p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
+<p>There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
 </blockquote>
-<p><br><br><em>C++:</em></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre>1
+<p><br></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -114,61 +110,51 @@ The function twoSum should return indices of the two n">
 18
 19
 20
-</pre></td><td class="code"><pre><span class="keyword">class</span> Solution {
-<span class="keyword">public</span>:
-  <span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> twoSum(<span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> &numbers, <span class="keyword">int</span> target) {
-    <span class="stl_container"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;</span> result;
-    <span class="stl_container"><span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;</span> ht;
-
-    <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; numbers.size(); i++) {
-      <span class="keyword">auto</span> it = ht.find(target - numbers[i]);
-      <span class="keyword">if</span> (it != ht.end()) {
-        result.push_back(ht[target - numbers[i]] + <span class="number">1</span>);
-        result.push_back(i + <span class="number">1</span>);
-        <span class="keyword">break</span>;
-      } <span class="keyword">else</span> {
-        ht[numbers[i]] = i;
-      }
-    }
-    
-    <span class="keyword">return</span> result;
-  }
-};
-</pre></td></tr></table></figure>
-
-
-<p><br><br><em>Java:</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
 </pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
-	<span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
-		HashMap&lt;Integer, Integer&gt; hMap = <span class="keyword">new</span> HashMap&lt;&gt;();
-		<span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+  <span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span>(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[]) {
+    <span class="keyword">int</span> m = A.length;
+    <span class="keyword">int</span> n = B.length;
+    <span class="keyword">int</span> k = m + n;
+    <span class="keyword">if</span> (k % <span class="number">2</span> != <span class="number">0</span>) {
+      <span class="keyword">return</span> findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span> + <span class="number">1</span>);
+    } <span class="keyword">else</span> {
+      <span class="keyword">return</span> (findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span>) + findKth(A, <span class="number">0</span>, B, <span class="number">0</span>, k / <span class="number">2</span> + <span class="number">1</span>)) / <span class="number">2.0</span>;
+    }
+  }
 
-		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) {
-			<span class="keyword">if</span> (hMap.containsKey(target - numbers[i])) {
-				result[<span class="number">0</span>] = hMap.get(target - numbers[i]) + <span class="number">1</span>;
-				result[<span class="number">1</span>] = i + <span class="number">1</span>;
-			} <span class="keyword">else</span> <span class="keyword">if</span> (!hMap.containsKey(numbers[i])) {
-				hMap.put(numbers[i], i);
-			}
-		}
-		<span class="keyword">return</span> result;
-	}
+  <span class="keyword">private</span> <span class="keyword">double</span> <span class="title">findKth</span>(<span class="keyword">int</span> A[], <span class="keyword">int</span> a, <span class="keyword">int</span> B[], <span class="keyword">int</span> b, <span class="keyword">int</span> k) {
+    <span class="keyword">if</span> (A.length - a &gt; B.length - b) {
+      <span class="keyword">return</span> findKth(B, b, A, a, k);
+    }
+    <span class="keyword">if</span> (a &gt;= A.length) {
+      <span class="keyword">return</span> B[b + k - <span class="number">1</span>];
+    }
+    <span class="keyword">if</span> (k == <span class="number">1</span>) {
+      <span class="keyword">return</span> Math.min(A[a], B[b]);
+    }
+    <span class="keyword">int</span> midA = Math.min(k / <span class="number">2</span>, A.length - a);
+    <span class="keyword">int</span> midB = k - midA;
+    <span class="keyword">if</span> (A[a + midA - <span class="number">1</span>] &lt; B[b + midB - <span class="number">1</span>]) {
+      <span class="keyword">return</span> findKth(A, a + midA, B, b, k - midA);
+    } <span class="keyword">else</span> <span class="keyword">if</span> (A[a + midA - <span class="number">1</span>] &gt; B[b + midB - <span class="number">1</span>]) {
+      <span class="keyword">return</span> findKth(A, a, B, b + midB, k - midB);
+    } <span class="keyword">else</span> {
+      <span class="keyword">return</span> A[a + midA - <span class="number">1</span>];
+    }
+  }
 }
 </pre></td></tr></table></figure>
 
@@ -187,7 +173,7 @@ The function twoSum should return indices of the two n">
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2014/05/16/2-sums/" data-title="2 Sums | MetaThought" data-tsina="null" class="share clearfix">
+  <div data-url="http://yoursite.com/2014/05/16/median-of-two-sorted-arrays/" data-title="Median of Two Sorted Arrays | MetaThought" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -196,14 +182,14 @@ The function twoSum should return indices of the two n">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/05/16/median-of-two-sorted-arrays/" title="Median of Two Sorted Arrays">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Median of Two Sorted Arrays</span>
+
+<div class="next">
+<a href="/2014/05/16/2-sums/"  title="2 Sums">
+ <strong>NEXT:</strong><br/> 
+ <span>2 Sums
+</span>
 </a>
 </div>
-
 
 </nav>
 
